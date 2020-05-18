@@ -6,3 +6,11 @@ git commit -m "first commit"
 git remote add origin https://github.com/reimibeta/anime_characters_rest_api.git
 git push -u origin master
 
+# fixed
+git commit -m "initial commit"
+git push origin master
+
+# git signout
+git config --global --unset user.name
+git config --global --unset user.email
+git config --global --unset credential.helper
