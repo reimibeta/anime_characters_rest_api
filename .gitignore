@@ -2,7 +2,7 @@
 # Edit at https://www.gitignore.io/?templates=python,vagrant
 
 # Database
-db.sqlite3
+# db.sqlite3
 
 # Environments
 .env
@@ -13,4 +13,4 @@ ENV/
 env.bak/
 venv.bak/
 
-requirements.txt
+# requirements.txt
