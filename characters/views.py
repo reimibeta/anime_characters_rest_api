@@ -6,7 +6,7 @@ from .serializers import CharactersSerializer, AnimeSerializer, CosplaySerialize
 class CharactersView(viewsets.ModelViewSet):
     queryset = Characters.objects.all()
     serializer_class = CharactersSerializer
-    permission_classs = (permissions.IsAuthenticatedOrReadOnly)
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 class AnimeView(viewsets.ModelViewSet):
     queryset = Anime.objects.all()
