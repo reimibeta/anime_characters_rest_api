@@ -5,6 +5,9 @@ class Anime(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name_plural = 'Anime'
+
 class Characters(models.Model):
     name = models.CharField(max_length=50)
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
@@ -13,8 +16,11 @@ class Characters(models.Model):
     class Meta:
         verbose_name_plural = 'Characters'
 
-class Weebs(models.Model):
+class Cosplays(models.Model):
     name = models.CharField(max_length=50)
     characters = models.ManyToManyField(Characters)
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name_plural = 'Cosplays'
