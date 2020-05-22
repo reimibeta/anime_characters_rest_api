@@ -1,6 +1,14 @@
 # Created by https://www.gitignore.io/api/python,vagrant
 # Edit at https://www.gitignore.io/?templates=python,vagrant
 
+### Python ###
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
 # Database
 # db.sqlite3
 
