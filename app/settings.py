@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'profiles',
     'characters',
 ]
 
@@ -121,8 +122,10 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-REST_FRAMEWORK = {
-    # rest_framework.permissions.AllowAny ,rest_framework.permissions.IsAuthenticated. rest_framework.permissions.IsAuthenticatedOrReadOnly
-    'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
-    'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
-}
+AUTH_USER_MODEL = 'profiles.UserProfile'
+
+# REST_FRAMEWORK = {
+#     # rest_framework.permissions.AllowAny ,rest_framework.permissions.IsAuthenticated. rest_framework.permissions.IsAuthenticatedOrReadOnly
+#     'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.IsAuthenticated',),
+#     'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework_simplejwt.authentication.JWTAuthentication',)
+# }
