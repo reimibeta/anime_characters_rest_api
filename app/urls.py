@@ -25,5 +25,5 @@ urlpatterns = [
     # characters API
     path('characters/', include('characters.urls')),
     # User Profile
-    path('userprofiles/', include('profiles.urls')),
+    # path('userprofiles/', include('profiles.urls')),
 ]
