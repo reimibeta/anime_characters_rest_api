@@ -5,4 +5,4 @@ class UserProfileAdmin(admin.ModelAdmin):
 
     readonly_fields = ('password',)
 
-admin.site.register(UserProfile)
+admin.site.register(UserProfile, UserProfileAdmin)
