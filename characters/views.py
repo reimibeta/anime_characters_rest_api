@@ -1,15 +1,19 @@
 from django.shortcuts import render
 from rest_framework import viewsets, permissions
-from .models import Characters, Anime, Cosplays
-from .serializers import CharactersSerializer, AnimeSerializer, CosplaySerializer
+from .models import Characters, Anime, Cosplays, CharacterImages
+from .serializers import CharactersSerializer, AnimeSerializer, CosplaySerializer, CharacterImagesSerializer
 from rest_framework_simplejwt.authentication import JWTAuthentication
 
 class CharactersView(viewsets.ModelViewSet):
     queryset = Characters.objects.all()
     serializer_class = CharactersSerializer
     # IsAuthenticatedOrReadOnly, IsAuthenticated
-    permission_classes = (permissions.IsAuthenticated,)
-    authentication_classes = [JWTAuthentication,]
+    # permission_classes = (permissions.IsAuthenticated,)
+    # authentication_classes = [JWTAuthentication,]
+
+class CharacterImagesView(viewsets.ModelViewSet):
+    queryset = CharacterImages.objects.all()
+    serializer_class = CharacterImagesSerializer
 
 class AnimeView(viewsets.ModelViewSet):
     queryset = Anime.objects.all()

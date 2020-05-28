@@ -1,4 +1,7 @@
 from django.db import models
+import uuid 
+from models.images.compress_image import compress_image
+from models.randoms.random_string import random_string
 
 class Anime(models.Model):
     name = models.CharField(max_length=50)
@@ -8,6 +11,7 @@ class Anime(models.Model):
     class Meta:
         verbose_name_plural = 'Anime'
 
+# character
 class Characters(models.Model):
     name = models.CharField(max_length=50)
     anime = models.ForeignKey(Anime, on_delete=models.CASCADE)
@@ -15,6 +19,20 @@ class Characters(models.Model):
         return self.name
     class Meta:
         verbose_name_plural = 'Characters'
+
+class CharacterImages(models.Model):
+    character = models.ForeignKey(Characters, on_delete=models.CASCADE, null=True)
+    thumbnail = models.ImageField(upload_to='photos/characters/{}/%Y-%m-%d/thumbnails/%Y-%m-%d/'.format(character.name), null=True, editable=False)
+    image = models.ImageField(upload_to='photos/characters/{}/%Y-%m-%d/'.format(character.name), null=True)
+
+    def __str__(self):
+        return self.image.url
+
+    def save(self, *args, **kwargs):
+        img = compress_image()
+        self.thumbnail = img.image(self.image, 'thumbnail_{}'.format(uuid.uuid4().hex[:8].upper()))
+        self.image.name = '{}{}'.format(random_string.ustring(), compress_image.ext(self.image))
+        super(CharacterImages, self).save(*args, **kwargs)
 
 class Cosplays(models.Model):
     name = models.CharField(max_length=50)

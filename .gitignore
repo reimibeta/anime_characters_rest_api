@@ -23,3 +23,6 @@ env.bak/
 venv.bak/
 
 # requirements.txt
+
+# Files
+media/photos/characters/
