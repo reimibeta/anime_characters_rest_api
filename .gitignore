@@ -26,3 +26,6 @@ venv.bak/
 
 # Files
 media/photos/characters/
+
+# Dummy Files
+.DS_Store
