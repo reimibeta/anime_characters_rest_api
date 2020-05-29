@@ -26,13 +26,16 @@ class CharacterImages(models.Model):
     image = models.ImageField(upload_to='photos/characters/%Y-%m-%d/', null=True)
 
     def __str__(self):
-        return self.image.url
+        return '' #self.image.url
 
     def save(self, *args, **kwargs):
-        if self.image:
+        print(self.image.path)
+        print(self.image.file)
+        if str(self.image.path) == str(self.image.file):
+            print('return true when on new file uploaded!')
+        else:
             img = compress_image()
             self.thumbnail = img.image(self.image, 'thumbnail_{}'.format(uuid.uuid4().hex[:8].upper()))
-            print(self.thumbnail.url)
             self.image.name = '{}{}'.format(random_string.ustring(), compress_image.ext(self.image))
         super(CharacterImages, self).save(*args, **kwargs)
     # def save(self):
