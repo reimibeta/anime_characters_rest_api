@@ -26,7 +26,7 @@ class CharacterImages(models.Model):
     image = models.ImageField(upload_to='photos/characters/%Y-%m-%d/', null=True)
 
     def __str__(self):
-        return '' #self.image.url
+        return self.image.url
 
     def save(self, *args, **kwargs):
         print(self.image.path)
