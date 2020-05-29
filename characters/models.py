@@ -22,17 +22,27 @@ class Characters(models.Model):
 
 class CharacterImages(models.Model):
     character = models.ForeignKey(Characters, on_delete=models.CASCADE, null=True)
-    thumbnail = models.ImageField(upload_to='photos/characters/{}/%Y-%m-%d/thumbnails/%Y-%m-%d/'.format(character.name), null=True, editable=False)
-    image = models.ImageField(upload_to='photos/characters/{}/%Y-%m-%d/'.format(character.name), null=True)
+    thumbnail = models.ImageField(upload_to='photos/characters/%Y-%m-%d/thumbnails/%Y-%m-%d/', null=True, editable=False)
+    image = models.ImageField(upload_to='photos/characters/%Y-%m-%d/', null=True)
 
     def __str__(self):
         return self.image.url
 
     def save(self, *args, **kwargs):
-        img = compress_image()
-        self.thumbnail = img.image(self.image, 'thumbnail_{}'.format(uuid.uuid4().hex[:8].upper()))
-        self.image.name = '{}{}'.format(random_string.ustring(), compress_image.ext(self.image))
+        if self.image:
+            img = compress_image()
+            self.thumbnail = img.image(self.image, 'thumbnail_{}'.format(uuid.uuid4().hex[:8].upper()))
+            print(self.thumbnail.url)
+            self.image.name = '{}{}'.format(random_string.ustring(), compress_image.ext(self.image))
         super(CharacterImages, self).save(*args, **kwargs)
+    # def save(self):
+    #     if not self.image:
+    #         img = compress_image()
+    #         self.thumbnail = img.image(
+    #             self.image, 'thumbnail_{}'.format(uuid.uuid4().hex[:8].upper()))
+    #         self.image.name = '{}{}'.format(
+    #             random_string.ustring(), compress_image.ext(self.image))
+    #     super(CharacterImages, self).save()
 
 class Cosplays(models.Model):
     name = models.CharField(max_length=50)

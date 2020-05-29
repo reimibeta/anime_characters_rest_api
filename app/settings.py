@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'profiles',
     'characters',
+    'django_cleanup.apps.CleanupConfig',  # should go after your apps
 ]
 
 MIDDLEWARE = [
