@@ -14,8 +14,9 @@ class CharactersView(viewsets.ModelViewSet):
 class CharacterImagesView(viewsets.ModelViewSet):
     queryset = CharacterImages.objects.all()
     serializer_class = CharacterImagesSerializer
-    permission_classes = (permissions.AllowAny,)
-
+    # permission_classes = (permissions.AllowAny,)
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = [JWTAuthentication,]
     # def put(self, request, *args, **kwargs):
     #     return self.update(request, *args, **kwargs)
 
