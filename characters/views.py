@@ -16,6 +16,9 @@ class CharacterImagesView(viewsets.ModelViewSet):
     serializer_class = CharacterImagesSerializer
     permission_classes = (permissions.AllowAny,)
 
+    # def put(self, request, *args, **kwargs):
+    #     return self.update(request, *args, **kwargs)
+
 class AnimeView(viewsets.ModelViewSet):
     queryset = Anime.objects.all()
     serializer_class = AnimeSerializer
