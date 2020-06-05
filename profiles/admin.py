@@ -23,6 +23,4 @@ class UserProfileAdmin(admin.ModelAdmin):
             profile.save()
             print(check_password) 
 
-        
-
 admin.site.register(UserProfile, UserProfileAdmin)

@@ -12,14 +12,14 @@ from .serializers import UserProfileSerializer
 from .models import UserProfile
 from .permissions import UpdateOwnProfile
 
-class LoginViewSet(viewsets.ViewSet):
-    """ Checks email and password and returns an auth token. """
+# class LoginViewSet(viewsets.ViewSet):
+#     """ Checks email and password and returns an auth token. """
 
-    serializer_class = AuthTokenSerializer
+#     serializer_class = AuthTokenSerializer
 
-    def create(self, request):
-        """ Use the ObtainAuthToken APIView to validate and create a token. """
-        return ObtainAuthToken().post(request)
+#     def create(self, request):
+#         """ Use the ObtainAuthToken APIView to validate and create a token. """
+#         return ObtainAuthToken().post(request)
 
 class UserProfileViewSet(viewsets.ModelViewSet):
     """ Handles creating, creating and updating profiles. """
