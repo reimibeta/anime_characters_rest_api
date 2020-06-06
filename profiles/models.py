@@ -32,6 +32,15 @@ class UserProfileManager(BaseUserManager):
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """ Respents a " user profile " inside our system. """
+    NORMAL_AUTH = 1
+    FACEBOOK_AUTH = 2
+    GMAIL_AUTH = 3
+    AUTH_CHOICES = (
+        (NORMAL_AUTH,'normal'),
+        (FACEBOOK_AUTH,'facebook'),
+        (GMAIL_AUTH,'gmail')
+    )
+    social_auth = models.PositiveSmallIntegerField(choices=AUTH_CHOICES, null=True, blank=True)
 
     email = models.EmailField(max_length=255, unique=True)
     name = models.CharField(max_length=255)

@@ -8,7 +8,7 @@ class UserProfileSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = UserProfile
-        fields = ('id','url', 'email', 'name', 'password', 'raw_password')
+        fields = ('id','url', 'email', 'name','social_auth', 'password', 'raw_password')
         extra_kwargs = {
             'password': {'write_only': True},
             # 'raw_password': {'read_only': True}
