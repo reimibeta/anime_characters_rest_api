@@ -83,6 +83,7 @@ class CharacterImagesSerializer(serializers.HyperlinkedModelSerializer):
     #     return True
 
 class AnimeSerializer(serializers.HyperlinkedModelSerializer):
+    
     class Meta:
         model = Anime
         fields = ('id','url','name')
