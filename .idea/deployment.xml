@@ -5,10 +5,7 @@
       <paths name="reimi@pcrpallet.com:22 password">
         <serverdata>
           <mappings>
-            <mapping deploy="/home/reimi/ssh" local="$PROJECT_DIR$" />
-            <mapping />
-            <mapping />
-            <mapping />
+            <mapping deploy="/home/reimi/ssh" local="$PROJECT_DIR$" web="/" />
           </mappings>
         </serverdata>
       </paths>
